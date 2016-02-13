@@ -1,0 +1,14 @@
+---
+applications:
+- name: zipkin-query-service
+  memory: 512M
+  instances: 1
+  host: zipkin-query-service-${random-word}
+  path: target/zipkin-query-service.jar
+  services:
+    - cnj-rabbitmq
+    - cnj-mysql
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    DEBUG: "true"
+    debug: "true"

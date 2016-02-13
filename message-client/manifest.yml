@@ -1,0 +1,13 @@
+---
+applications:
+- name: zipkin-client-a
+  memory: 512M
+  instances: 1
+  host: zipkin-client-a-${random-word}
+  path: target/zipkin-client-a.jar
+  services:
+    - cnj-rabbitmq
+    - zipkin-client-b
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    DEBUG: "true"
